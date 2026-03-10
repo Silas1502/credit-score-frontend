@@ -22,14 +22,14 @@ export default function Home() {
         <div>
 
           <h1 className="text-5xl font-bold leading-tight mb-6">
-            AI Loan Risk
-            <span className="text-blue-600"> Assessment</span>
+            Đánh Giá Rủi Ro Khoản Vay
+            <span className="text-blue-600"> bằng AI</span>
           </h1>
 
           <p className="text-gray-600 mb-8 text-lg">
-            Evaluate loan applications instantly using machine learning.
-            Analyze financial metrics and predict the risk of loan approval
-            in seconds.
+            Đánh giá hồ sơ vay vốn ngay lập tức bằng mô hình học máy.
+            Phân tích các chỉ số tài chính và dự đoán rủi ro phê duyệt
+            khoản vay chỉ trong vài giây.
           </p>
 
           <Link
@@ -37,7 +37,7 @@ export default function Home() {
             className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition"
           >
             <CreditCard size={20} />
-            Start Assessment
+            Bắt đầu đánh giá
           </Link>
 
         </div>
@@ -49,29 +49,29 @@ export default function Home() {
 
           <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
             <Landmark className="text-blue-600" />
-            Loan Evaluation Metrics
+            Các chỉ số đánh giá khoản vay
           </h3>
 
           <ul className="space-y-4 text-gray-600">
 
             <li className="flex items-center gap-3">
               <DollarSign className="text-green-500" />
-              Income vs Loan Amount
+              Thu nhập so với số tiền vay
             </li>
 
             <li className="flex items-center gap-3">
               <TrendingUp className="text-indigo-500" />
-              Debt to Income Ratio
+              Tỷ lệ nợ trên thu nhập
             </li>
 
             <li className="flex items-center gap-3">
               <CreditCard className="text-purple-500" />
-              Credit History Length
+              Thời gian lịch sử tín dụng
             </li>
 
             <li className="flex items-center gap-3">
               <ShieldCheck className="text-red-500" />
-              Delinquencies
+              Lịch sử trễ hạn thanh toán
             </li>
 
           </ul>
@@ -87,7 +87,7 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-6 pb-20">
 
         <h2 className="text-3xl font-bold text-center mb-12">
-          Why Use Our AI System
+          Tại sao nên sử dụng hệ thống AI của chúng tôi
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -97,12 +97,12 @@ export default function Home() {
             <BrainCircuit size={36} className="text-blue-600 mb-4" />
 
             <h3 className="text-xl font-semibold mb-2">
-              Machine Learning Model
+              Mô hình Machine Learning
             </h3>
 
             <p className="text-gray-600">
-              Our AI analyzes financial data to predict loan risk with
-              advanced algorithms.
+              AI phân tích dữ liệu tài chính để dự đoán rủi ro khoản vay
+              bằng các thuật toán tiên tiến.
             </p>
 
           </div>
@@ -113,12 +113,12 @@ export default function Home() {
             <TrendingUp size={36} className="text-green-600 mb-4" />
 
             <h3 className="text-xl font-semibold mb-2">
-              Instant Risk Prediction
+              Dự đoán rủi ro ngay lập tức
             </h3>
 
             <p className="text-gray-600">
-              Receive predictions immediately through our integrated
-              FastAPI backend.
+              Nhận kết quả dự đoán ngay lập tức thông qua backend
+              FastAPI được tích hợp.
             </p>
 
           </div>
@@ -129,12 +129,12 @@ export default function Home() {
             <ShieldCheck size={36} className="text-indigo-600 mb-4" />
 
             <h3 className="text-xl font-semibold mb-2">
-              Financial Risk Insights
+              Phân tích rủi ro tài chính
             </h3>
 
             <p className="text-gray-600">
-              Understand the financial indicators that influence loan
-              approval decisions.
+              Hiểu rõ các chỉ số tài chính ảnh hưởng đến quyết định
+              phê duyệt khoản vay.
             </p>
 
           </div>

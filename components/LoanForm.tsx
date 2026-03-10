@@ -31,6 +31,19 @@ export default function LoanForm({ setResult }: any) {
     savings_balance: ""
   };
 
+  const labels: any = {
+    income: "Thu nhập hàng năm",
+    age: "Tuổi",
+    employment_years: "Số năm làm việc",
+    loan_amount: "Số tiền vay",
+    loan_term: "Thời hạn vay (tháng)",
+    credit_history_length: "Thời gian lịch sử tín dụng",
+    num_credit_lines: "Số tài khoản tín dụng",
+    num_delinquencies: "Số lần trễ hạn",
+    debt_to_income_ratio: "Tỷ lệ nợ / thu nhập",
+    savings_balance: "Số dư tiết kiệm"
+  };
+
   const [loading, setLoading] = useState(false);
   const [useDemo, setUseDemo] = useState(false);
   const [errors, setErrors] = useState<any>({});
@@ -51,34 +64,34 @@ export default function LoanForm({ setResult }: any) {
       Object.entries(form).map(([k, v]) => [k, Number(v)])
     );
 
-    if (f.income <= 0) newErrors.income = "Income must be greater than 0";
+    if (f.income <= 0) newErrors.income = "Thu nhập phải lớn hơn 0";
 
     if (f.age < 18 || f.age > 100)
-      newErrors.age = "Age must be between 18 and 100";
+      newErrors.age = "Tuổi phải từ 18 đến 100";
 
     if (f.employment_years < 0 || f.employment_years > 60)
-      newErrors.employment_years = "Employment years must be 0–60";
+      newErrors.employment_years = "Số năm làm việc phải từ 0–60";
 
     if (f.loan_amount <= 0)
-      newErrors.loan_amount = "Loan amount must be greater than 0";
+      newErrors.loan_amount = "Số tiền vay phải lớn hơn 0";
 
     if (f.loan_term < 1 || f.loan_term > 360)
-      newErrors.loan_term = "Loan term must be 1–360 months";
+      newErrors.loan_term = "Thời hạn vay phải từ 1–360 tháng";
 
     if (f.credit_history_length < 0 || f.credit_history_length > 50)
-      newErrors.credit_history_length = "Credit history length must be 0–50";
+      newErrors.credit_history_length = "Lịch sử tín dụng phải từ 0–50 năm";
 
     if (f.num_credit_lines < 0 || f.num_credit_lines > 50)
-      newErrors.num_credit_lines = "Credit lines must be 0–50";
+      newErrors.num_credit_lines = "Số tài khoản tín dụng phải từ 0–50";
 
     if (f.num_delinquencies < 0 || f.num_delinquencies > 20)
-      newErrors.num_delinquencies = "Delinquencies must be 0–20";
+      newErrors.num_delinquencies = "Số lần trễ hạn phải từ 0–20";
 
     if (f.debt_to_income_ratio < 0 || f.debt_to_income_ratio > 1)
-      newErrors.debt_to_income_ratio = "Debt-to-income ratio must be 0–1";
+      newErrors.debt_to_income_ratio = "Tỷ lệ nợ / thu nhập phải từ 0–1";
 
     if (f.savings_balance < 0)
-      newErrors.savings_balance = "Savings balance must be ≥ 0";
+      newErrors.savings_balance = "Số dư tiết kiệm phải ≥ 0";
 
     return newErrors;
   };
@@ -106,7 +119,7 @@ export default function LoanForm({ setResult }: any) {
 
     } catch {
 
-      alert("API error");
+      alert("Lỗi API");
 
     } finally {
 
@@ -163,9 +176,9 @@ export default function LoanForm({ setResult }: any) {
 
           <label
             htmlFor={key}
-            className="text-sm text-gray-600 mb-1 capitalize"
+            className="text-sm text-gray-600 mb-1"
           >
-            {key.replaceAll("_", " ")}
+            {labels[key]}
           </label>
 
           <input
@@ -195,7 +208,7 @@ export default function LoanForm({ setResult }: any) {
       <div className="md:col-span-2">
 
         {loading && (
-          <p className="text-blue-500 mb-2">Processing prediction...</p>
+          <p className="text-blue-500 mb-2">Đang xử lý dự đoán...</p>
         )}
 
         <div className="flex items-center gap-2 mb-3">
@@ -212,12 +225,10 @@ export default function LoanForm({ setResult }: any) {
           />
 
           <label htmlFor="demoData" className="text-sm text-gray-600">
-            Use Demo Data
+            Dùng dữ liệu mẫu
           </label>
 
         </div>
-
-        {/* Buttons */}
 
         <div className="flex gap-3">
 
@@ -226,14 +237,14 @@ export default function LoanForm({ setResult }: any) {
             onClick={clearForm}
             className="w-1/3 border border-gray-300 py-3 rounded-lg hover:bg-gray-100 transition"
           >
-            Clear Form
+            Làm sạch form
           </button>
 
           <button
             type="submit"
             className="w-2/3 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
           >
-            Predict Loan Risk
+            Dự đoán rủi ro khoản vay
           </button>
 
         </div>

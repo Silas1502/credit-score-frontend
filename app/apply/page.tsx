@@ -17,7 +17,7 @@ export default function ApplyPage() {
       <div className="max-w-7xl mx-auto py-12 px-6">
 
         <h1 className="text-4xl font-bold mb-10 text-gray-800">
-          AI Loan Risk Prediction
+          Dự đoán rủi ro khoản vay bằng AI
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -25,7 +25,7 @@ export default function ApplyPage() {
           {/* LEFT - FORM */}
           <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
             <h2 className="text-xl font-semibold mb-4">
-              Applicant Information
+              Thông tin người vay
             </h2>
 
             <LoanForm setResult={setResult} />
@@ -35,14 +35,14 @@ export default function ApplyPage() {
           <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
 
             <h2 className="text-xl font-semibold mb-4">
-              Prediction Result
+              Kết quả dự đoán
             </h2>
 
             {result ? (
               <LoanResult result={result} />
             ) : (
               <p className="text-gray-400">
-                Submit the form to see prediction
+                Gửi thông tin để xem kết quả dự đoán
               </p>
             )}
 

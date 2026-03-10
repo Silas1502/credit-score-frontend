@@ -20,6 +20,7 @@ export default function HistoryPage() {
 
   const [totalDB, setTotalDB] = useState(0)
   const [approvedDB, setApprovedDB] = useState(0)
+  const [rejectedDB, setRejectedDB] = useState(0)
   const [avgScoreDB, setAvgScoreDB] = useState(0)
 
   useEffect(() => {
@@ -36,12 +37,13 @@ export default function HistoryPage() {
 
           setTotalDB(data.total)
           setApprovedDB(data.approved)
+          setRejectedDB(data.total - data.approved)
           setAvgScoreDB(data.avg_score)
         }
 
       } catch (err) {
         console.error(err)
-        alert("Failed to load history")
+        alert("Không thể tải lịch sử")
       } finally {
         setLoading(false)
       }
@@ -59,29 +61,27 @@ export default function HistoryPage() {
   if (loading)
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-gray-500">Loading history...</p>
+        <p className="text-gray-500">Đang tải lịch sử...</p>
       </div>
     )
 
   return (
     <div>
 
-      {/* Navbar full width */}
       <Navbar />
 
-      {/* Content */}
       <div className="px-8 py-6">
 
         <h1 className="text-xl md:text-2xl font-bold mb-6">
-          Loan Applications History
+          Lịch sử hồ sơ vay
         </h1>
 
         {/* Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
 
           <div className="bg-gray-100 p-4 rounded-lg">
             <p className="text-sm text-gray-600">
-              Total Applications
+              Tổng số hồ sơ
             </p>
             <p className="text-lg md:text-xl font-bold">
               {totalDB}
@@ -90,7 +90,7 @@ export default function HistoryPage() {
 
           <div className="bg-gray-100 p-4 rounded-lg">
             <p className="text-sm text-gray-600">
-              Approval Rate
+              Tỷ lệ phê duyệt
             </p>
             <p className="text-lg md:text-xl font-bold">
               {Number(approvalRate || 0).toFixed(1)}%
@@ -99,7 +99,25 @@ export default function HistoryPage() {
 
           <div className="bg-gray-100 p-4 rounded-lg">
             <p className="text-sm text-gray-600">
-              Average Score
+              Được duyệt
+            </p>
+            <p className="text-lg md:text-xl font-bold text-green-600">
+              {approvedDB}
+            </p>
+          </div>
+
+          <div className="bg-gray-100 p-4 rounded-lg">
+            <p className="text-sm text-gray-600">
+              Từ chối
+            </p>
+            <p className="text-lg md:text-xl font-bold text-red-600">
+              {rejectedDB}
+            </p>
+          </div>
+
+          <div className="bg-gray-100 p-4 rounded-lg">
+            <p className="text-sm text-gray-600">
+              Điểm trung bình
             </p>
             <p className="text-lg md:text-xl font-bold">
               {(avgScoreDB ?? 0).toFixed(2)}
@@ -119,18 +137,18 @@ export default function HistoryPage() {
             disabled={page === 1}
             className="px-2 py-1 md:px-4 md:py-2 border rounded disabled:opacity-40 hover:bg-gray-100"
           >
-            Prev
+            Trước
           </button>
 
           <span className="px-2 md:px-3 py-1">
-            Page {page}
+            Trang {page}
           </span>
 
           <button
             onClick={() => setPage(page + 1)}
             className="px-2 py-1 md:px-4 md:py-2 border rounded hover:bg-gray-100"
           >
-            Next
+            Sau
           </button>
 
         </div>
